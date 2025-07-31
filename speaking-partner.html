@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Dari Sertifikat Speaking Partner Saya</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 32px;
+            color: #333;
+        }
+        .slider {
+            width: 600px;
+            margin: 32px auto 16px auto;
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 16px 0 24px 0;
+        }
+        .slide {
+            display: none;
+            width: 95%;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .active {
+            display: block;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            cursor: pointer;
+            opacity: 0.8;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+        .slider-btn:hover {
+            background: #555;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        .desc {
+            text-align: center;
+            color: #444;
+            margin: 24px auto 0 auto;
+            max-width: 400px;
+            font-size: 1.05em;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin: 32px auto 0 auto;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detail Speaking Partner</h1>
+    <div class="slider">
+        <img class="slide active" src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 01.31.25_93e414d9.jpg" alt="Slide 1">
+        <img class="slide" src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-29 at 15.02.21_f4eabf82.jpg" alt="Slide 2">
+        <!-- Tambahkan gambar lain jika perlu -->
+        <button class="slider-btn prev" onclick="plusSlides(-1)">&#10094;</button>
+        <button class="slider-btn next" onclick="plusSlides(1)">&#10095;</button>
+    </div>
+    <div class="desc">
+        <p>Deskripsi lengkap tentang pengalaman speaking partner, saya belajar dan mengembangkan publik speaking saya di khursus speaking partner saya belajar lebih keras untuk mendapat kan hasil yang maksimal.</p>
+    </div>
+    <a href="code.html" class="back-link">mari kembali ke portofolio saya</a>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        showSlide(slideIndex);
+
+        function plusSlides(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function showSlide(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === slideIndex);
+            });
+        }
+    </script>
+</body>
+</html>

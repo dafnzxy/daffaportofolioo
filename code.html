@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Klasik</title>
+    <style>
+        :root {
+            --primary-bg: #f5f7fa;
+            --secondary-color: #88b2b2;
+            --accent-color: #ff7e67;
+            --text-dark: #333;
+            --text-muted: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--primary-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            background-color: var(--primary-bg);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 3px solid var(--secondary-color);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-item h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background-color: var(--light-gray);
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Portofolio Daffa</a>
+                <div class="nav-links">
+                    <a href="#about">Tentang</a>
+                    <a href="#skills">Keahlian</a>
+                    <a href="#projects">Projek</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-image">
+                <img src="WhatsApp Image 2025-07-29 at 01.42.34_09fb7dcb.jpg" alt="Potret profesional dengan background netral, mengenakan kemeja formal dengan ekspresi ramah dan percaya diri" />
+            </div>
+            <h1>Halo, Saya Daffa Abdul Jalal</h1>
+            <p>Seorang profesional kreatif dengan spesialisasi dalam pengembangan web dan desain yang berpengalaman selama 3+ tahun.</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn">Lihat Projek</a>
+                <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Mengenal Lebih Dekat</h3>
+                    <p>nama saya daffa abdul jalal dan saya adalah pelajar umur saya 16 tahun, saya berprofesi sebagai web developer sekaligus sofware engineer selain saya bermain di web desainer saya juga ahli dalam hardware software system .</p>
+                    <p>Pendekatan saya dalam bekerja berfokus pada pemahaman mendalam tentang kebutuhan pengguna, diikuti dengan eksekusi teknis yang presisi. Saya percaya bahwa produk digital yang baik harus menyenangkan secara visual sekaligus memberikan pengalaman pengguna yang mulus.</p>
+                    <p>Di luar pekerjaan, saya juga memabngun usaha yaitu PT MPI Multi Piranti Informatika.</p>
+                </div>
+                <div class="about-image">
+                    <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-29 at 14.44.26_1741b532.jpg" alt="Orang profesional sedang bekerja di ruang kerja minimalis dengan laptop dan notebook, cahaya natural dari jendela" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Keahlian</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>Pengembangan Web</h3>
+                    <p>HTML5, CSS3, JavaScript, React, Vue.js, Node.js dengan pengalaman membangun aplikasi web responsif dan interaktif.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Desain UI/UX</h3>
+                    <p>Kemampuan membuat wireframe, prototype, dan desain antarmuka yang fokus pada pengalaman pengguna dan estetika visual.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">📱</div>
+                    <h3>Mobile Development</h3>
+                    <p>Pengembangan aplikasi hybrid dengan React Native dan Flutter untuk solusi lintas platform yang efisien.</p>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🔍</div>
+                    <h3>SEO & Analytics</h3>
+                    <p>Optimasi mesin pencari dan analisis data untuk meningkatkan visibilitas dan performa digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Pengalaman Dan Sertifikat</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.24_ef0f5f15.jpg" alt="Tampilan dashboard analitik modern dengan grafik dan metrik bisnis pada layar laptop" />
+                    </div>
+                    <div class="project-info">
+                        <h3>PYTHON Kodland coding </h3>
+                        <p>Platform saya belajar dan berpengalaman di dunia coding dari Kodland.</p>
+                        <div class="tags">
+                            <span class="tag">python</span>
+                            <span class="tag">game</span>
+                            <span class="tag">portofolio</span>
+                             <span class="tag">web desain</span>
+                        </div>
+                        <a href="kodland.html" class="btn">Lihat Detail</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 01.54.59_ee1e4897.jpg" alt="Tampilan mobile aplikasi e-learning dengan ilustrasi pendidikan di smartphone" />
+                    </div>
+                    <div class="project-info">
+                        <h3>Speaking partner </h3>
+                        <p>Pengalaman saya dalam berbahasa inggris.</p>
+                        <div class="tags">
+                            <span class="tag">english speaking</span>
+                            <span class="tag">British accent</span>
+                        </div>
+                        <a href="speaking-partner.html" class="btn">Lihat Detail</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1a47cc91-ffdb-46bf-9454-ff00fd31e019.png" alt="Tampilan website portofolio fotografi dengan galeri grid dan desain minimalis" />
+                    </div>
+                    <div class="project-info">
+                        <h3>Portofolio Fotografer</h3>
+                        <p>Website pameran untuk fotografer profesional dengan galeri interaktif dan sistem booking.</p>
+                        <div class="tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                        <a href="#" class="btn">Lihat Detail</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Nama</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subjek</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: var(--white)">Portofolio</div>
+            <div class="social-links">
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Dribbble">Dribbble</a>
+                <a href="#" aria-label="Github">GitHub</a>
+                <a href="#" aria-label="Instagram">Instagram</a>
+            </div>
+            <p class="copyright">© 2023 Portofolio Klasik. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

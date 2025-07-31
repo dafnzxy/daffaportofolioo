@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeri Kodland - Slider</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin: 32px 0 24px 0;
+            color: #333;
+        }
+        .slider-container {
+            max-width: 600px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            padding: 24px 0 32px 0;
+            position: relative;
+        }
+        .slide {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .slide img {
+            width: 90%;
+            max-width: 480px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 18px;
+        }
+        .desc {
+            color: #444;
+            font-size: 1.1em;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .slider-btn:hover {
+            background: #0056b3;
+        }
+        .slider-btn.prev { left: 16px; }
+        .slider-btn.next { right: 16px; }
+        .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 32px;
+        }
+        .button {
+            min-width: 300px;
+            min-height: 60px;
+            display: inline-flex;
+            font-family: 'Nunito', sans-serif;
+            font-size: 22px;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1.3px;
+            font-weight: 700;
+            color: #313133;
+            background: #4FD1C5;
+            background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+            border: none;
+            border-radius: 1000px;
+            box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            padding: 10px;
+        }
+        .button::before {
+            content: '';
+            border-radius: 1000px;
+            min-width: calc(300px + 12px);
+            min-height: calc(60px + 12px);
+            border: 6px solid #00FFCB;
+            box-shadow: 0 0 60px rgba(0,255,203,.64);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all .3s ease-in-out 0s;
+        }
+        .button:hover, 
+        .button:focus {
+            color: #313133;
+            transform: translateY(-6px);
+        }
+        .button:hover::before, 
+        .button:focus::before {
+            opacity: 1;
+        }
+        .button::after {
+            content: '';
+            width: 30px; height: 30px;
+            border-radius: 100%;
+            border: 6px solid #00FFCB;
+            position: absolute;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: ring 1.5s infinite;
+        }
+        .button:hover::after, 
+        .button:focus::after {
+            animation: none;
+            display: none;
+        }
+        @keyframes ring {
+            0% {
+                width: 30px;
+                height: 30px;
+                opacity: 1;
+            }
+            100% {
+                width: 300px;
+                height: 300px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Galeri Kodland</h1>
+    <div class="slider-container">
+        <button class="slider-btn prev" onclick="plusSlides(-1)">&#10094;</button>
+        <button class="slider-btn next" onclick="plusSlides(1)">&#10095;</button>
+        <div class="slide active">
+            <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.25_93d13fc2.jpg" alt="Dashboard Analitik Kodland">
+            <div class="desc">sertifikat saya, python pro yang berfokus kepada satu tujuan yaitu desain web dan UI/UX.</div>
+        </div>
+        <div class="slide">
+            <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.25_50f2917d.jpg" alt="Portofolio Fotografi Kodland">
+            <div class="desc">Website portofolio fotografi dengan galeri grid dan desain minimalis, hasil proyek akhir kelas web development.</div>
+        </div>
+        <div class="slide">
+            <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.25_8c70e65a.jpg" alt="Aplikasi Mobile E-Learning">
+            <div class="desc">Tampilan aplikasi mobile e-learning yang saya kembangkan untuk tugas kelompok, dengan ilustrasi pendidikan di smartphone.</div>
+        </div>
+        <div class="slide">
+            <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.24_ef0f5f15.jpg" alt="Aplikasi Mobile E-Learning">
+            <div class="desc">Tampilan aplikasi mobile e-learning yang saya kembangkan untuk tugas kelompok, dengan ilustrasi pendidikan di smartphone.</div>
+        </div>
+        <div class="slide">
+            <img src="C:\Users\lenovo\Documents\my portofolio\WhatsApp Image 2025-07-31 at 14.26.24_97f26266.jpg" alt="Aplikasi Mobile E-Learning">
+            <div class="desc">Tampilan aplikasi mobile e-learning yang saya kembangkan untuk tugas kelompok, dengan ilustrasi pendidikan di smartphone.</div>
+        </div>
+    </div>
+    <div class="wrap">
+        <a href="code.html" class="button">Ayu balik ke profilku</a>
+    </div>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        showSlide(slideIndex);
+
+        function plusSlides(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function showSlide(n) {
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === slideIndex);
+            });
+        }
+    </script>
